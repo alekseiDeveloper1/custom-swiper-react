@@ -1,11 +1,15 @@
 
-import React, {useState} from 'react';
+import React, {useState, useRef} from 'react';
 import styled from 'styled-components';
 import { Swiper, SwiperSlide } from 'swiper/react';
+import type { Swiper as SwiperInstance } from 'swiper';
 import 'swiper/css';
+import 'swiper/css/effect-fade';
+import { EffectFade } from 'swiper/modules';
 import {DEFAULT_SLIDES} from "@/constants";
 import {CircularNav} from "@/components/CircularNav/CircularNav";
 import {Stage} from "@/components/Stage/Stage";
+import { SliderControls } from '@/components/SliderControls/SliderControls';
 
 const AppContainer = styled.div`
   position: relative;
@@ -55,23 +59,42 @@ const NavSection = styled.div`
 `;
 
 const App: React.FC = () => {
-  const logIndex = (state:any) => {
-    console.log(state);
-  }
+  const swiperRef = useRef<SwiperInstance | null>(null);
   const [activeIndex, setActiveIndex] = useState(0);
   const handleNavClick = (index: number) => {
-    setActiveIndex(index);
+    if(swiperRef.current) {
+      swiperRef.current.slideTo(index)
+    }
   };
+  const handlePrev = () => {
+    if(swiperRef.current) {
+      swiperRef.current.slidePrev();
+    }
+  };
+
+  const handleNext = () => {
+    if(swiperRef.current) {
+      swiperRef.current.slideNext();
+    }
+  };
+  const onSlideChange = (state: SwiperInstance) => {
+    setActiveIndex(state.activeIndex)
+  }
   return (
     <AppContainer>
       <Title >Исторические даты</Title>
       <Swiper
+        modules={[EffectFade]}
+        effect="fade"
+        onSwiper={(swiper) => {
+          swiperRef.current = swiper;
+        }}
         spaceBetween={50}
         slidesPerView={1}
-        onSlideChange={logIndex}
+        onSlideChange={onSlideChange}
       >
-        {DEFAULT_SLIDES.map((item) => {
-          return (<SwiperSlide>
+        {DEFAULT_SLIDES.map((item, index) => {
+          return (<SwiperSlide key={index}>
             <Stage stage={item.stage} />
           </SwiperSlide>)
         })}
@@ -84,6 +107,12 @@ const App: React.FC = () => {
           onSelect={handleNavClick}
         />
       </NavSection>
+      <SliderControls
+        onPrev={handlePrev}
+        onNext={handleNext}
+        current={activeIndex + 1}
+        total={DEFAULT_SLIDES.length}
+      />
     </AppContainer>
   );
 };

@@ -9,6 +9,11 @@ export const GlobalStyles = createGlobalStyle`
       sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    background-color: #f0f0f0;
+  }
+
+  .swiper-slide {
+    background-color: #f0f0f0;
   }
 
   code {

@@ -5,7 +5,7 @@
   "description": "A stable template for React, TypeScript, Styled Components, Webpack, Swiper, and GSAP.",
   "main": "dist/index.js",
   "scripts": {
-    "dev": "webpack serve --mode development",
+    "dev": "webpack serve --mode development --port 8081",
     "build": "webpack --mode production",
     "test": "jest",
     "test:watch": "jest --watch",
@@ -26,7 +26,7 @@
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "styled-components": "^5.3.10",
-    "swiper": "^9.4.1"
+    "swiper": "^12.0.3"
   },
   "devDependencies": {
     "@babel/core": "^7.22.9",
@@ -43,7 +43,7 @@
     "babel-plugin-styled-components": "^2.1.4",
     "clean-webpack-plugin": "^4.0.0",
     "css-loader": "^6.8.1",
-    "cypress": "^12.17.4",
+    "cypress": "^15.8.1",
     "html-webpack-plugin": "^5.5.3",
     "identity-obj-proxy": "^3.0.0",
     "jest": "^29.6.2",
@@ -54,6 +54,6 @@
     "typescript": "^5.1.6",
     "webpack": "^5.88.2",
     "webpack-cli": "^5.1.4",
-    "webpack-dev-server": "^4.15.1"
+    "webpack-dev-server": "^5.2.2"
   }
 }

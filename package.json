@@ -1,5 +1,6 @@
 {
   "name": "react-ts-template",
+  "type": "module",
   "version": "1.0.0",
   "description": "A stable template for React, TypeScript, Styled Components, Webpack, Swiper, and GSAP.",
   "main": "dist/index.js",

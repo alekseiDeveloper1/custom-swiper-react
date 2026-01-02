@@ -14,7 +14,8 @@ module.exports = {
     extensions: ['.tsx', '.ts', '.js', '.jsx'],
     alias: {
       '@': path.resolve(__dirname, 'src/'),
-    }
+    },
+    mainFields: ['module', 'main'],
   },
   module: {
     rules: [

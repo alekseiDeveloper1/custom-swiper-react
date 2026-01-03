@@ -1,4 +1,3 @@
-
 export interface SlideData {
   id: string;
   title: string;

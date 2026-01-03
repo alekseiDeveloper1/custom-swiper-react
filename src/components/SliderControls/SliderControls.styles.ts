@@ -1,17 +1,20 @@
 import styled from 'styled-components';
 
 export const ControlsContainer = styled.div`
-  position: absolute;
-  bottom: 2rem;
-  left: 2rem;
+  margin-top: 50px;
+  margin-left: 30px;
   display: flex;
-  align-items: center;
+  flex-direction: column;
   z-index: 1;
 `;
 
+export const ButtonWrap = styled.div`
+  display: flex;
+  margin-top: 20px;
+`;
+
 export const ControlButton = styled.button`
-  background-color: #fff;
-  border: 1px solid rgba(66, 86, 122, 0.1);
+  border: 1px solid rgba(66, 86, 122, 0.7);
   width: 50px;
   height: 50px;
   border-radius: 50%;

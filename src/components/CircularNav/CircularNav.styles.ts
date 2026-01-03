@@ -1,4 +1,4 @@
-import styled, { css } from 'styled-components';
+import styled from 'styled-components';
 
 const CIRCLE_SIZE = 500;
 const ITEM_SIZE = 80;
@@ -90,10 +90,8 @@ export const NavItemContent = styled.div<{isActive:boolean, title:string}>`
       width: 200px;
       color: black;
   }
-  /* Scale is still handled here as it is a discrete state change, not continuous */
 `;
 
-// New helper for counter rotation to avoid conflict with hover scale
 export const CounterRotator = styled.div`
   width: 100%;
   height: 100%;
@@ -108,14 +106,4 @@ export const NavNumber = styled.div`
   font-weight: 800;
   line-height: 1;
   cursor: pointer;
-`;
-
-export const NavLabel = styled.span`
-  font-size: 0.5rem;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  margin-top: 4px;
-  max-width: 60px;
-  white-space: nowrap;
-  text-overflow: ellipsis;
 `;

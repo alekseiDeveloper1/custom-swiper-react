@@ -1,7 +1,8 @@
 import styled from "styled-components";
 import React from "react";
+
 const StageTitleWrap = styled.div`
-    text-align: center;
+  text-align: center;
 `
 const FirstStageTitle = styled.span`
   color: #5D5FEF;
@@ -25,6 +26,5 @@ export const Stage: React.FC<StageProps> = ({stage}) => {
       <FirstStageTitle>{firstStage + " "}</FirstStageTitle>
       <SecondStageTitle>{secondStage}</SecondStageTitle>
     </StageTitleWrap>
-
   )
 }

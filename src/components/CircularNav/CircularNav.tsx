@@ -29,7 +29,6 @@ export const CircularNav: React.FC<CircularNavProps> = ({ items, activeIndex, on
                 transform: `rotate(${angle}deg) translate(${radius}px) rotate(${-angle}deg)`
               }}
             >
-              {/* Separate Rotation from Scale/Color to avoid CSS overrides */}
               <S.CounterRotator style={{ transform: `rotate(${-containerRotation}deg)` }}>
                 <S.NavItemContent
                   title={item.title}
@@ -39,7 +38,6 @@ export const CircularNav: React.FC<CircularNavProps> = ({ items, activeIndex, on
                 >
                   <S.NavNumber>{String(index + 1).padStart(2, '0')}</S.NavNumber>
                 </S.NavItemContent>
-
               </S.CounterRotator>
             </S.NavItemWrapper>
           );

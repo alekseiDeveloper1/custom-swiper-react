@@ -1,8 +1,13 @@
-
-import React, {useState, useRef} from 'react';
+import React, { useState, useRef } from 'react';
 import styled from 'styled-components';
+import { DEFAULT_SLIDES } from "@/constants";
+import { CircularNav } from "@/components/CircularNav/CircularNav";
+import { Stage } from "@/components/Stage/Stage";
+
 import { Swiper, SwiperSlide } from 'swiper/react';
 import type { Swiper as SwiperInstance } from 'swiper';
+import { SliderControls } from '@/components/SliderControls/SliderControls';
+import { EffectFade } from 'swiper/modules';
 import 'swiper/css';
 import 'swiper/css/effect-fade';
 import { EffectFade } from 'swiper/modules';
@@ -26,7 +31,6 @@ const AppContainer = styled.div`
     width: 1px;
     height: 100%;
     background-color: rgba(66, 86, 122, 0.1);
-    
   }
   &::after {
     content: '';
@@ -37,7 +41,6 @@ const AppContainer = styled.div`
     height: 1px;
     background-color: rgba(66, 86, 122, 0.1);
   }
-    
 `;
 
 const Title = styled.h1`
@@ -99,7 +102,6 @@ const App: React.FC = () => {
             <Stage stage={item.stage} />
           </SwiperSlide>)
         })}
-
       </Swiper>
       <NavSection>
         <CircularNav

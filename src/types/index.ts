@@ -1,12 +1,4 @@
 
-export interface SlideData {
-  id: string;
-  title: string;
-  description: string;
-  color: string;
-  image?: string;
-}
-
 export interface AppTheme {
   colors: {
     primary: string;
@@ -19,4 +11,16 @@ export interface AppTheme {
   transitions: {
     main: string;
   };
+}
+
+export interface SubSlide {
+  title: number;
+  description: string;
+}
+
+export interface Slide {
+  id: string;
+  title: string;
+  stage: string[];
+  subSlides: SubSlide[];
 }

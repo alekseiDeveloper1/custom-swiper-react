@@ -10,6 +10,7 @@ import {DEFAULT_SLIDES} from "@/constants";
 import {CircularNav} from "@/components/CircularNav/CircularNav";
 import {Stage} from "@/components/Stage/Stage";
 import { SliderControls } from '@/components/SliderControls/SliderControls';
+import { SubSlider } from '@/components/SubSlider/SubSlider';
 
 const AppContainer = styled.div`
   position: relative;
@@ -113,6 +114,7 @@ const App: React.FC = () => {
         current={activeIndex + 1}
         total={DEFAULT_SLIDES.length}
       />
+      <SubSlider slides={DEFAULT_SLIDES[activeIndex].subSlides} />
     </AppContainer>
   );
 };

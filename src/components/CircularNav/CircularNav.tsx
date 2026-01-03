@@ -1,9 +1,9 @@
 import React from 'react';
 import * as S from './CircularNav.styles';
-import {SlideData} from "@/types";
+import {Slide} from "@/types";
 
 interface CircularNavProps {
-  items: SlideData[];
+  items: Slide[];
   activeIndex: number;
   onSelect: (index: number) => void;
 }

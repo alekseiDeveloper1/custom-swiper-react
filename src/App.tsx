@@ -2,13 +2,15 @@ import React, { useState, useRef } from 'react';
 import styled from 'styled-components';
 import { CircularNav } from "@/components/CircularNav/CircularNav";
 import { Stage } from "@/components/Stage/Stage";
+import useIsMobile from './hooks/useIsMobile';
 
 import { Swiper, SwiperSlide } from 'swiper/react';
 import type { Swiper as SwiperInstance } from 'swiper';
 import { SliderControls } from '@/components/SliderControls/SliderControls';
-import { EffectFade } from 'swiper/modules';
+import { EffectFade, Pagination } from 'swiper/modules';
 import 'swiper/css';
 import 'swiper/css/effect-fade';
+import 'swiper/css/pagination';
 import { DEFAULT_SLIDES } from "@/constants";
 import { SubSlider } from '@/components/SubSlider/SubSlider';
 
@@ -59,6 +61,7 @@ const NavSection = styled.div`
 const App: React.FC = () => {
   const swiperRef = useRef<SwiperInstance | null>(null);
   const [activeIndex, setActiveIndex] = useState(0);
+  const isMobile = useIsMobile();
   const handleNavClick = (index: number) => {
     if(swiperRef.current) {
       swiperRef.current.slideTo(index)
@@ -82,8 +85,9 @@ const App: React.FC = () => {
     <AppContainer>
       <Title >Исторические даты</Title>
       <Swiper
-        modules={[EffectFade]}
-        effect="fade"
+        modules={[EffectFade, Pagination]}
+        effect={"fade"}
+        pagination={isMobile ? { clickable: true } : false}
         onSwiper={(swiper) => {
           swiperRef.current = swiper;
         }}
@@ -97,13 +101,13 @@ const App: React.FC = () => {
           </SwiperSlide>)
         })}
       </Swiper>
-      <NavSection>
+      {!isMobile && <NavSection>
         <CircularNav
           items={DEFAULT_SLIDES}
           activeIndex={activeIndex}
           onSelect={handleNavClick}
         />
-      </NavSection>
+      </NavSection>}
       <SliderControls
         onPrev={handlePrev}
         onNext={handleNext}

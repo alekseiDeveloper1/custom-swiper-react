@@ -2,14 +2,9 @@
 import styled from 'styled-components';
 
 export const SubSliderContainer = styled.div`
-  position: absolute;
-  bottom: 2rem;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 600px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  position: relative;
+  width: 650px;
+  margin: 100px;
 `;
 
 export const SubSlide = styled.div`
@@ -19,6 +14,7 @@ export const SubSlide = styled.div`
   h3 {
     margin: 0 0 0.5rem;
     font-size: 1.25rem;
+    color: #5D5FEF;
   }
   p {
     margin: 0;
@@ -27,6 +23,7 @@ export const SubSlide = styled.div`
 `;
 
 export const NavButton = styled.button`
+  position: absolute;
   background: transparent;
   border: 1px solid #42567A;
   color: #42567A;
@@ -34,21 +31,24 @@ export const NavButton = styled.button`
   width: 50px;
   height: 50px;
   border-radius: 50%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
   font-size: 20px;
-  
+  &:hover {
+    background-color: white;
+  }
   &:disabled {
     opacity: 0.5;
     cursor: not-allowed;
   }
   
   &.prev {
-    margin-right: 1rem;
+    top:50%;
+    transform: translateY(-50%);
+    left: -75px;
   }
   
   &.next {
-    margin-left: 1rem;
+    top:50%;
+    transform: translateY(-50%);
+    right: -75px
   }
 `;

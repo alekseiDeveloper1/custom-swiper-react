@@ -1,6 +1,5 @@
 import React, { useState, useRef } from 'react';
 import styled from 'styled-components';
-import { DEFAULT_SLIDES } from "@/constants";
 import { CircularNav } from "@/components/CircularNav/CircularNav";
 import { Stage } from "@/components/Stage/Stage";
 
@@ -10,16 +9,11 @@ import { SliderControls } from '@/components/SliderControls/SliderControls';
 import { EffectFade } from 'swiper/modules';
 import 'swiper/css';
 import 'swiper/css/effect-fade';
-import { EffectFade } from 'swiper/modules';
-import {DEFAULT_SLIDES} from "@/constants";
-import {CircularNav} from "@/components/CircularNav/CircularNav";
-import {Stage} from "@/components/Stage/Stage";
-import { SliderControls } from '@/components/SliderControls/SliderControls';
+import { DEFAULT_SLIDES } from "@/constants";
 import { SubSlider } from '@/components/SubSlider/SubSlider';
 
 const AppContainer = styled.div`
   position: relative;
-  height: 100vh;
   margin: 0 6rem;
   border-right: 1px solid rgba(66, 86, 122, 0.1);
   border-left: 1px solid rgba(66, 86, 122, 0.1);

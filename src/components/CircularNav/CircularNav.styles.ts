@@ -78,17 +78,17 @@ export const NavItemContent = styled.div<{isActive:boolean, title:string}>`
     font-size: 1.2rem;
     min-width: 56px;
     min-height: 56px;
-    background: transparent;
+    background: white;
   }
   &::after {
-      content: '${props => props.title}';
-      display: ${props => props.isActive ? 'block' : 'none'};
-      position: absolute;
-      line-height: 56px;
-      top: 0;
-      left: 76px;
-      width: 200px;
-      color: black;
+    content: '${props => props.title}';
+    display: ${props => props.isActive ? 'block' : 'none'};
+    position: absolute;
+    line-height: 56px;
+    top: 0;
+    left: 76px;
+    width: 200px;
+    color: black;
   }
 `;
 

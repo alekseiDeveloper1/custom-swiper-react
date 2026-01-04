@@ -3,17 +3,16 @@ export const DEFAULT_SLIDES = [
   { id: '1', title: 'ARCHITECTURE', stage: ['1987', '1989'], subSlides: [
     {title: 1987, description: 'Clean folder structure based on industry best practices.'},
     {title: 1988, description: 'Clean folder structure based on industry best practices.'},
+    {title: 1989, description: 'Clean folder structure based on industry best practices.'},
+    {title: 1988, description: 'Clean folder structure based on industry best practices.'},
     {title: 1989, description: 'Clean folder structure based on industry best practices.'}
   ] },
   { id: '2', title: 'PERFORMANCE', stage: ['1997', '1998'], subSlides: [
     {title: 1997, description: 'Clean folder structure based on industry best practices.'},
     {title: 1997, description: 'Clean folder structure based on industry best practices.'},
-    {title: 1998, description: 'Clean folder structure based on industry best practices.'}
   ] },
   { id: '3', title: 'SCALABILITY', stage: ['2000', '2005'], subSlides: [
     {title: 2000, description: 'Clean folder structure based on industry best practices.'},
-    {title: 2005, description: 'Clean folder structure based on industry best practices.'},
-    {title: 2005, description: 'Clean folder structure based on industry best practices.'}
   ]},
   { id: '4', title: 'SECURITY', stage: ['2010', '2015'], subSlides: [
     {title: 2010, description: 'Clean folder structure based on industry best practices.'},

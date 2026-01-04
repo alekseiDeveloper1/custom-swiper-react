@@ -11,6 +11,7 @@ export const ControlsContainer = styled.div`
 export const ButtonWrap = styled.div`
   display: flex;
   margin-top: 20px;
+    
 `;
 
 export const ControlButton = styled.button`
@@ -27,7 +28,7 @@ export const ControlButton = styled.button`
   transition: background-color 0.3s;
 
   &:hover {
-    background-color: #f0f0f0;
+      background-color: white;
   }
 
   &:disabled {

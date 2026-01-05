@@ -1,24 +1,25 @@
-
 import React, { useRef } from 'react';
-import { Swiper, SwiperSlide } from 'swiper/react';
-import type { Swiper as SwiperInstance } from 'swiper';
-import 'swiper/css';
 import { SubSliderContainer, SubSlide as SubSlideStyles, NavButton } from './SubSlider.styles';
 import { SubSlide } from '@/types';
-import {FreeMode, Navigation} from 'swiper/modules';
+
+import { Swiper, SwiperSlide } from 'swiper/react';
+import type { Swiper as SwiperInstance } from 'swiper';
+import { FreeMode, Navigation } from 'swiper/modules';
+import 'swiper/css';
 import 'swiper/css/free-mode';
 import 'swiper/css/navigation';
+
 interface SubSliderProps {
   slides: SubSlide[];
 }
 
 export const SubSlider: React.FC<SubSliderProps> = ({ slides }) => {
   const swiperRef = useRef<SwiperInstance | null>(null);
-
   const navigation = {
     prevEl: '.prev',
     nextEl: '.next',
   };
+
   return (
     <SubSliderContainer>
       <NavButton className="prev">&lt;</NavButton>
@@ -31,7 +32,6 @@ export const SubSlider: React.FC<SubSliderProps> = ({ slides }) => {
         freeMode={true}
         navigation={navigation}
         modules={[FreeMode, Navigation]}
-
       >
         {slides.map((slide, index) => (
           <SwiperSlide key={index}>

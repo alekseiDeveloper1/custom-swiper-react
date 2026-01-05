@@ -19,12 +19,14 @@ export const SliderControls: React.FC<SliderControlsProps> = ({ onPrev, onNext, 
         {String(current).padStart(2, '0')}/{String(total).padStart(2, '0')}
       </Counter>
       <ButtonWrap>
-        <ControlButton onClick={onPrev} disabled={current === 1}>
-          &lt;
-        </ControlButton>
-        <ControlButton onClick={onNext} disabled={current === total}>
-          &gt;
-        </ControlButton>
+        <ControlButton
+          onClick={onPrev}
+          disabled={current === 1}
+        >&lt;</ControlButton>
+        <ControlButton
+          onClick={onNext}
+          disabled={current === total}
+        >&gt;</ControlButton>
       </ButtonWrap>
     </ControlsContainer>
   );

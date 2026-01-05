@@ -22,7 +22,6 @@ export const NavContainer = styled.div`
   }
 `;
 
-// Removed dynamic rotation prop, handled via inline style
 export const RotatingRing = styled.div`
   position: absolute;
   width: 100%;
@@ -58,7 +57,6 @@ export const NavItemWrapper = styled.div`
   z-index: 10;
 `;
 
-// Removed counterRotation prop, handled via inline style
 export const NavItemContent = styled.div<{isActive:boolean, title:string}>`
   position: relative;
   box-sizing: border-box;

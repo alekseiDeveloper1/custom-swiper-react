@@ -11,10 +11,6 @@ export const GlobalStyles = createGlobalStyle`
     background-color: #f0f0f0;
   }
 
-  .swiper-slide {
-    background-color: #f0f0f0;
-  }
-
   code {
     font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
       monospace;

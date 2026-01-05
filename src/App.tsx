@@ -1,8 +1,10 @@
-import React, { useState, useRef } from 'react';
-import styled from 'styled-components';
+import React, {useState, useRef} from 'react';
 import { CircularNav } from "@/components/CircularNav/CircularNav";
 import { Stage } from "@/components/Stage/Stage";
 import useIsMobile from './hooks/useIsMobile';
+import { AppContainer, NavSection, Title } from './App.styles'
+import { DEFAULT_SLIDES } from "@/constants";
+import { SubSlider } from '@/components/SubSlider/SubSlider';
 
 import { Swiper, SwiperSlide } from 'swiper/react';
 import type { Swiper as SwiperInstance } from 'swiper';
@@ -11,57 +13,17 @@ import { EffectFade, Pagination } from 'swiper/modules';
 import 'swiper/css';
 import 'swiper/css/effect-fade';
 import 'swiper/css/pagination';
-import { DEFAULT_SLIDES } from "@/constants";
-import { SubSlider } from '@/components/SubSlider/SubSlider';
-
-const AppContainer = styled.div`
-  position: relative;
-  margin: 0 6rem;
-  border-right: 1px solid rgba(66, 86, 122, 0.1);
-  border-left: 1px solid rgba(66, 86, 122, 0.1);
-  &::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 50%;
-    width: 1px;
-    height: 100%;
-    background-color: rgba(66, 86, 122, 0.1);
-  }
-  &::after {
-    content: '';
-    position: absolute;
-    right: 0;
-    top: 50%;
-    width: 100%;
-    height: 1px;
-    background-color: rgba(66, 86, 122, 0.1);
-  }
-`;
-
-const Title = styled.h1`
-  color: #42567AFF;
-  font-size: 45px;
-  margin-top: 20px;
-  width: 50px;
-  border-left: 4px solid transparent; /* The 'transparent' is key */
-  border-image: linear-gradient(#3877EE, #EF5DA8) 1;
-  padding: 1rem
-`;
-
-const NavSection = styled.div`
-  position: absolute;
-  width: 500px;
-  top: 50%;
-  right: 50%;
-  z-index: 1;
-  transform: translate(50%, -50%)
-`;
 
 const App: React.FC = () => {
+
   const swiperRef = useRef<SwiperInstance | null>(null);
+
   const [activeIndex, setActiveIndex] = useState(0);
   const isMobile = useIsMobile();
+
+  const onSlideChange = (state: SwiperInstance) => {
+    setActiveIndex(state.activeIndex)
+  }
   const handleNavClick = (index: number) => {
     if(swiperRef.current) {
       swiperRef.current.slideTo(index)
@@ -72,15 +34,12 @@ const App: React.FC = () => {
       swiperRef.current.slidePrev();
     }
   };
-
   const handleNext = () => {
     if(swiperRef.current) {
       swiperRef.current.slideNext();
     }
   };
-  const onSlideChange = (state: SwiperInstance) => {
-    setActiveIndex(state.activeIndex)
-  }
+
   return (
     <AppContainer>
       <Title >Исторические даты</Title>
@@ -88,18 +47,16 @@ const App: React.FC = () => {
         modules={[EffectFade, Pagination]}
         effect={"fade"}
         pagination={isMobile ? { clickable: true } : false}
-        onSwiper={(swiper) => {
-          swiperRef.current = swiper;
-        }}
+        onSwiper={(swiper) => swiperRef.current = swiper}
         spaceBetween={50}
         slidesPerView={1}
         onSlideChange={onSlideChange}
       >
-        {DEFAULT_SLIDES.map((item, index) => {
+        {DEFAULT_SLIDES.map((_, index) => {
           return (<SwiperSlide key={index}>
-            <Stage stage={item.stage} />
           </SwiperSlide>)
         })}
+        <Stage stage={DEFAULT_SLIDES[activeIndex].stage} />
       </Swiper>
       {!isMobile && <NavSection>
         <CircularNav

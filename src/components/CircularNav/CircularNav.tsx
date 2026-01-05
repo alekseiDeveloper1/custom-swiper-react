@@ -1,6 +1,12 @@
 import React from 'react';
-import * as S from './CircularNav.styles';
-import {Slide} from "@/types";
+import { Slide } from "@/types";
+import {
+  CounterRotator,
+  NavContainer,
+  NavItemContent,
+  NavItemWrapper, NavNumber,
+  RotatingRing
+} from "@/components/CircularNav/CircularNav.styles";
 
 interface CircularNavProps {
   items: Slide[];
@@ -16,33 +22,33 @@ export const CircularNav: React.FC<CircularNavProps> = ({ items, activeIndex, on
   const offset = 180 / count
 
   return (
-    <S.NavContainer>
-      <S.RotatingRing style={{ transform: `rotate(${containerRotation}deg)` }}>
+    <NavContainer>
+      <RotatingRing style={{ transform: `rotate(${containerRotation}deg)` }}>
         {items.map((item, index) => {
           const angle = (index * step) - 90 + offset;
 
           return (
-            <S.NavItemWrapper
+            <NavItemWrapper
               key={item.id}
               onClick={() => onSelect(index)}
               style={{
                 transform: `rotate(${angle}deg) translate(${radius}px) rotate(${-angle}deg)`
               }}
             >
-              <S.CounterRotator style={{ transform: `rotate(${-containerRotation}deg)` }}>
-                <S.NavItemContent
+              <CounterRotator style={{ transform: `rotate(${-containerRotation}deg)` }}>
+                <NavItemContent
                   title={item.title}
                   isActive={activeIndex === index}
                   data-active={activeIndex === index}
                   data-testid="nav-item-content"
                 >
-                  <S.NavNumber>{String(index + 1).padStart(2, '0')}</S.NavNumber>
-                </S.NavItemContent>
-              </S.CounterRotator>
-            </S.NavItemWrapper>
+                  <NavNumber>{String(index + 1).padStart(2, '0')}</NavNumber>
+                </NavItemContent>
+              </CounterRotator>
+            </NavItemWrapper>
           );
         })}
-      </S.RotatingRing>
-    </S.NavContainer>
+      </RotatingRing>
+    </NavContainer>
   );
 };

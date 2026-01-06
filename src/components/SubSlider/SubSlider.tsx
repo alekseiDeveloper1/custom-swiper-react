@@ -8,6 +8,7 @@ import { FreeMode, Navigation } from 'swiper/modules';
 import 'swiper/css';
 import 'swiper/css/free-mode';
 import 'swiper/css/navigation';
+import useIsMobile from "@/hooks/useIsMobile";
 
 interface SubSliderProps {
   slides: SubSlide[];
@@ -15,6 +16,7 @@ interface SubSliderProps {
 
 export const SubSlider: React.FC<SubSliderProps> = ({ slides }) => {
   const swiperRef = useRef<SwiperInstance | null>(null);
+  const isMobile = useIsMobile();
   const navigation = {
     prevEl: '.prev',
     nextEl: '.next',
@@ -22,16 +24,19 @@ export const SubSlider: React.FC<SubSliderProps> = ({ slides }) => {
 
   return (
     <SubSliderContainer>
-      <NavButton className="prev">&lt;</NavButton>
+      {!isMobile && <NavButton className="prev">&lt;</NavButton>}
       <Swiper
         onSwiper={(swiper) => {
           swiperRef.current = swiper;
         }}
         spaceBetween={30}
-        slidesPerView={3}
         freeMode={true}
         navigation={navigation}
         modules={[FreeMode, Navigation]}
+        breakpoints={{
+          320: { slidesPerView: 2 },
+          1200: { slidesPerView: 3 },
+        }}
       >
         {slides.map((slide, index) => (
           <SwiperSlide key={index}>
@@ -42,7 +47,7 @@ export const SubSlider: React.FC<SubSliderProps> = ({ slides }) => {
           </SwiperSlide>
         ))}
       </Swiper>
-      <NavButton className="next">&gt;</NavButton>
+      {!isMobile && <NavButton className="next">&gt;</NavButton>}
     </SubSliderContainer>
   );
 };

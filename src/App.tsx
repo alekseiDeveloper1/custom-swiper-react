@@ -2,7 +2,7 @@ import React, {useState, useRef} from 'react';
 import { CircularNav } from "@/components/CircularNav/CircularNav";
 import { Stage } from "@/components/Stage/Stage";
 import useIsMobile from './hooks/useIsMobile';
-import { AppContainer, NavSection, Title } from './App.styles'
+import {AppContainer, BottomWrap, NavSection, PaginationContainer, Title} from './App.styles'
 import { DEFAULT_SLIDES } from "@/constants";
 import { SubSlider } from '@/components/SubSlider/SubSlider';
 
@@ -42,36 +42,46 @@ const App: React.FC = () => {
 
   return (
     <AppContainer>
-      <Title >Исторические даты</Title>
+      <Title>Исторические даты</Title>
+      <Stage stage={DEFAULT_SLIDES[activeIndex].stage}/>
       <Swiper
         modules={[EffectFade, Pagination]}
         effect={"fade"}
-        pagination={isMobile ? { clickable: true } : false}
+        pagination={isMobile ? {
+          el: '.custom-pagination-container',
+          clickable: true
+
+        } : false}
         onSwiper={(swiper) => swiperRef.current = swiper}
         spaceBetween={50}
         slidesPerView={1}
         onSlideChange={onSlideChange}
       >
-        {DEFAULT_SLIDES.map((_, index) => {
+        {DEFAULT_SLIDES.map((item, index) => {
           return (<SwiperSlide key={index}>
+            {isMobile && item.title}
           </SwiperSlide>)
         })}
-        <Stage stage={DEFAULT_SLIDES[activeIndex].stage} />
       </Swiper>
+
       {!isMobile && <NavSection>
-        <CircularNav
-          items={DEFAULT_SLIDES}
-          activeIndex={activeIndex}
-          onSelect={handleNavClick}
-        />
+          <CircularNav
+              items={DEFAULT_SLIDES}
+              activeIndex={activeIndex}
+              onSelect={handleNavClick}
+          />
       </NavSection>}
-      <SliderControls
-        onPrev={handlePrev}
-        onNext={handleNext}
-        current={activeIndex + 1}
-        total={DEFAULT_SLIDES.length}
-      />
-      <SubSlider slides={DEFAULT_SLIDES[activeIndex].subSlides} />
+      {isMobile && <hr/>}
+      <BottomWrap>
+        <PaginationContainer className="custom-pagination-container"></PaginationContainer>
+        <SliderControls
+          onPrev={handlePrev}
+          onNext={handleNext}
+          current={activeIndex + 1}
+          total={DEFAULT_SLIDES.length}
+        />
+        <SubSlider slides={DEFAULT_SLIDES[activeIndex].subSlides}/>
+      </BottomWrap>
     </AppContainer>
   );
 };

@@ -6,12 +6,20 @@ export const ControlsContainer = styled.div`
   display: flex;
   flex-direction: column;
   z-index: 1;
+  width: 100%;
+  @media (max-width: 1200px) {
+      flex: 1 0 auto;
+      width: 40%;
+  }
 `;
 
 export const ButtonWrap = styled.div`
   display: flex;
   margin-top: 20px;
-    
+  flex: 1 1 100%;
+  @media (max-width: 1200px) {
+      flex: 1 0 auto;
+  }
 `;
 
 export const ControlButton = styled.button`
@@ -26,16 +34,16 @@ export const ControlButton = styled.button`
   font-size: 20px;
   color: #42567A;
   transition: background-color 0.3s;
-
   &:hover {
-      background-color: white;
+    background-color: white;
+    @media (max-width: 1200px) {
+        background-color: transparent;
+    }
   }
-
   &:disabled {
     cursor: not-allowed;
     opacity: 0.5;
   }
-
   & + & {
     margin-left: 1rem;
   }

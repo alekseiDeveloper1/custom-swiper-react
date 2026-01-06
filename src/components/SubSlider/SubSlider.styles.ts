@@ -4,6 +4,10 @@ export const SubSliderContainer = styled.div`
   position: relative;
   width: 650px;
   margin: 100px;
+  @media (max-width: 1200px) {
+    width: 90%;
+    margin: 5px;
+  }
 `;
 
 export const SubSlide = styled.div`
@@ -38,13 +42,11 @@ export const NavButton = styled.button`
     opacity: 0.5;
     cursor: not-allowed;
   }
-  
   &.prev {
     top:50%;
     transform: translateY(-50%);
     left: -75px;
   }
-  
   &.next {
     top:50%;
     transform: translateY(-50%);

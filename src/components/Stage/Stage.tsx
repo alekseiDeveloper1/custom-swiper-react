@@ -7,16 +7,23 @@ import {usePrevious} from "@/hooks/usePrevious";
 const StageTitleWrap = styled.div`
   text-align: center;
   margin-top: 100px;
+  font-size: 200px;
+  @media (max-width: 1200px) {
+    margin-top: 20px;
+    font-size: 10vw;
+    margin-bottom: 50px;
+  }
 `
 const FirstStageTitle = styled.span`
   color: #5D5FEF;
-  font-size: 12rem;
   font-weight: bold;
   margin-right: 50px;
+  @media (max-width: 1200px) {
+    margin-right: 10px;
+  }
 `;
 const SecondStageTitle = styled.span`
   color: #EF5DA8;
-  font-size: 200px;
   font-weight: bold;
 `;
 interface StageProps {

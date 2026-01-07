@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const AppContainer = styled.div`
+export const HistoricalSliderContainer = styled.div`
   position: relative;
   margin: 2rem 6rem;
   border-right: 1px solid rgba(66, 86, 122, 0.1);

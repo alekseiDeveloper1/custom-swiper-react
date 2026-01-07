@@ -6,7 +6,6 @@ import {usePrevious} from "@/hooks/usePrevious";
 
 const StageTitleWrap = styled.div`
   text-align: center;
-  margin-top: 100px;
   font-size: 200px;
   @media (max-width: 1200px) {
     margin-top: 20px;

@@ -51,6 +51,7 @@ const HistoricalSlider: React.FC<HistoricalSliderProps> = ({ slides, title }) =>
       <Title>{title}</Title>
       <Stage stage={slides[activeIndex].stage}/>
       <Swiper
+        className="mySwiper"
         modules={[EffectFade, Pagination]}
         effect={"fade"}
         pagination={isMobile ? {

@@ -1,8 +1,8 @@
 {
-  "name": "react-ts-template",
+  "name": "historical-slider",
   "type": "module",
   "version": "1.0.0",
-  "description": "A stable template for React, TypeScript, Styled Components, Webpack, Swiper, and GSAP.",
+  "description": "historical-slider",
   "main": "dist/index.js",
   "scripts": {
     "dev": "webpack serve --mode development --port 8081",
@@ -19,7 +19,7 @@
     "swiper",
     "gsap"
   ],
-  "author": "Gemini",
+  "author": "Aleksey",
   "license": "ISC",
   "dependencies": {
     "gsap": "^3.12.2",

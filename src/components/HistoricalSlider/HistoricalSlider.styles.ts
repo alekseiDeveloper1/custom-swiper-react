@@ -22,7 +22,7 @@ export const HistoricalSliderContainer = styled.div`
     content: '';
     position: absolute;
     right: 0;
-    top: 50%;
+    top: 324px;
     width: 100%;
     height: 1px;
     background-color: rgba(66, 86, 122, 0.1);
@@ -38,7 +38,7 @@ export const HistoricalSliderContainer = styled.div`
 export const Title = styled.h1`
   color: #42567AFF;
   font-size: 45px;
-  margin-top: 20px;
+  margin-top: 120px;
   width: 50px;
   border-left: 4px solid transparent; /* The 'transparent' is key */
   border-image: linear-gradient(#3877EE, #EF5DA8) 1;
@@ -54,7 +54,7 @@ export const Title = styled.h1`
 export const NavSection = styled.div`
   position: absolute;
   width: 500px;
-  top: 50%;
+  top: 324px;
   right: 50%;
   z-index: 1;
   transform: translate(50%, -50%)

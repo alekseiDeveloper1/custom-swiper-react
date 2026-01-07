@@ -3,7 +3,7 @@ import styled from 'styled-components';
 export const SubSliderContainer = styled.div`
   position: relative;
   width: 650px;
-  margin: 100px;
+  margin: 56px 100px;
   @media (max-width: 1200px) {
     width: 90%;
     margin: 5px;

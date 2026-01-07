@@ -10,7 +10,6 @@ export const NavContainer = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  
   @media (max-width: 1024px) {
     margin-left: 0;
     margin-top: 2rem;
@@ -54,7 +53,6 @@ export const NavItemWrapper = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  z-index: 10;
 `;
 
 export const NavItemContent = styled.div<{isActive:boolean, title:string}>`

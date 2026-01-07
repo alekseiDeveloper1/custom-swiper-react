@@ -5,7 +5,6 @@ export const ControlsContainer = styled.div`
   margin-left: 30px;
   display: flex;
   flex-direction: column;
-  z-index: 1;
   width: 100%;
   @media (max-width: 1200px) {
       flex: 1 0 auto;
@@ -34,12 +33,17 @@ export const ControlButton = styled.button`
   font-size: 20px;
   color: #42567A;
   transition: background-color 0.3s;
+  @media (max-width: 1200px) {
+      -webkit-tap-highlight-color: transparent;
+  }
   &:hover {
     background-color: white;
     @media (max-width: 1200px) {
         background-color: transparent;
     }
   }
+  
+    
   &:disabled {
     cursor: not-allowed;
     opacity: 0.5;

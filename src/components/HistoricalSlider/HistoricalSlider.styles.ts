@@ -3,12 +3,14 @@ import styled from "styled-components";
 export const HistoricalSliderContainer = styled.div`
   position: relative;
   margin: 2rem 6rem;
-  border-right: 1px solid rgba(66, 86, 122, 0.1);
-  border-left: 1px solid rgba(66, 86, 122, 0.1);
-  @media (max-width: 1200px) {
+  border-right: 1px solid ${({ theme }) => theme.colors.border};
+  border-left: 1px solid ${({ theme }) => theme.colors.border};
+  
+  @media (max-width: ${({ theme }) => theme.breakpoints.laptop}) {
     border: none;
     margin: 2rem 1rem;
   }
+
   &::before {
     content: '';
     position: absolute;
@@ -16,8 +18,9 @@ export const HistoricalSliderContainer = styled.div`
     left: 50%;
     width: 1px;
     height: 100%;
-    background-color: rgba(66, 86, 122, 0.1);
+    background-color: ${({ theme }) => theme.colors.border};
   }
+
   &::after {
     content: '';
     position: absolute;
@@ -25,47 +28,47 @@ export const HistoricalSliderContainer = styled.div`
     top: 324px;
     width: 100%;
     height: 1px;
-    background-color: rgba(66, 86, 122, 0.1);
+    background-color: ${({ theme }) => theme.colors.border};
   }
-    &::after, &::before {
-      @media (max-width: 1200px) {
-        display: none;
-      }
+
+  &::after, &::before {
+    @media (max-width: ${({ theme }) => theme.breakpoints.laptop}) {
+      display: none;
     }
-  
+  }
 `;
 
 export const Title = styled.h1`
-  color: #42567AFF;
+  color: ${({ theme }) => theme.colors.primary};
   font-size: 45px;
   margin-top: 120px;
   width: 50px;
-  border-left: 4px solid transparent; /* The 'transparent' is key */
-  border-image: linear-gradient(#3877EE, #EF5DA8) 1;
+  border-left: 4px solid transparent;
+  border-image: linear-gradient(${({ theme }) => theme.colors.secondary}, ${({ theme }) => theme.colors.accent}) 1;
   padding: 1rem;
-  @media (max-width: 1200px) {
+  
+  @media (max-width: ${({ theme }) => theme.breakpoints.laptop}) {
     margin-top: 20px;
     font-size: 7vw;
     border-image: none;
-      
   }
 `;
 
 export const NavSection = styled.div`
   position: absolute;
-  width: 500px;
+  width: ${({ theme }) => theme.sizes.circle}px;
   top: 324px;
   right: 50%;
   z-index: 1;
-  transform: translate(50%, -50%)
+  transform: translate(50%, -50%);
 `;
 
 export const PaginationContainer = styled.div`
   display: flex;
   justify-content: flex-end;
-  @media (max-width: 1200px) {
+  @media (max-width: ${({ theme }) => theme.breakpoints.laptop}) {
     flex: 0 0 40%;
-    align-items: center
+    align-items: center;
   }
 `;
 
@@ -74,8 +77,8 @@ export const BottomWrap = styled.div`
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  @media (max-width: 1200px) {
+  @media (max-width: ${({ theme }) => theme.breakpoints.laptop}) {
     flex-direction: row-reverse;
-      flex-wrap: wrap-reverse;
+    flex-wrap: wrap-reverse;
   }
 `;

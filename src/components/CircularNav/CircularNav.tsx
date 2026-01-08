@@ -1,10 +1,12 @@
-import React from 'react';
+
+import React, { useMemo } from 'react';
 import { Slide } from "@/types";
 import {
   CounterRotator,
   NavContainer,
   NavItemContent,
-  NavItemWrapper, NavNumber,
+  NavItemWrapper,
+  NavNumber,
   RotatingRing
 } from "@/components/CircularNav/CircularNav.styles";
 
@@ -16,13 +18,27 @@ interface CircularNavProps {
 
 export const CircularNav: React.FC<CircularNavProps> = ({ items, activeIndex, onSelect }) => {
   const count = items.length;
-  const step = 360 / count;
-  const containerRotation = activeIndex * -step;
   const radius = 250;
-  const offset = 180 / count
+
+  // Memoize calculations to avoid re-computing on every render if items/count rarely change
+  const { step, offset, containerRotation } = useMemo(() => {
+    const stepCalc = 360 / count;
+    return {
+      step: stepCalc,
+      offset: 180 / count,
+      containerRotation: activeIndex * -stepCalc
+    };
+  }, [count, activeIndex]);
+
+  const handleKeyDown = (e: React.KeyboardEvent, index: number) => {
+    if (e.key === 'Enter' || e.key === ' ') {
+      e.preventDefault();
+      onSelect(index);
+    }
+  };
 
   return (
-    <NavContainer>
+    <NavContainer data-testid="circular-nav">
       <RotatingRing style={{ transform: `rotate(${containerRotation}deg)` }}>
         {items.map((item, index) => {
           const angle = (index * step) - 90 + offset;
@@ -31,8 +47,15 @@ export const CircularNav: React.FC<CircularNavProps> = ({ items, activeIndex, on
             <NavItemWrapper
               key={item.id}
               onClick={() => onSelect(index)}
+              onKeyDown={(e) => handleKeyDown(e, index)}
+              role="button"
+              tabIndex={0}
+              aria-label={`Select time period ${index + 1}: ${item.title}`}
+              aria-current={activeIndex === index ? 'step' : undefined}
               style={{
-                transform: `rotate(${angle}deg) translate(${radius}px) rotate(${-angle}deg)`
+                transform: `rotate(${angle}deg) translate(${radius}px) rotate(${-angle}deg)`,
+                cursor: 'pointer',
+                outline: 'none'
               }}
             >
               <CounterRotator style={{ transform: `rotate(${-containerRotation}deg)` }}>
@@ -40,7 +63,7 @@ export const CircularNav: React.FC<CircularNavProps> = ({ items, activeIndex, on
                   title={item.title}
                   isActive={activeIndex === index}
                   data-active={activeIndex === index}
-                  data-testid="nav-item-content"
+                  data-testid={`nav-item-${index}`}
                 >
                   <NavNumber>{String(index + 1).padStart(2, '0')}</NavNumber>
                 </NavItemContent>

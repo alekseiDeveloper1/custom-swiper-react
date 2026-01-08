@@ -1,22 +1,20 @@
 import styled from 'styled-components';
 
-const CIRCLE_SIZE = 500;
-const ITEM_SIZE = 80;
-
 export const NavContainer = styled.div`
   position: relative;
-  width: ${CIRCLE_SIZE}px;
-  height: ${CIRCLE_SIZE}px;
+  width: ${({ theme }) => theme.sizes.circle}px;
+  height: ${({ theme }) => theme.sizes.circle}px;
   display: flex;
   align-items: center;
   justify-content: center;
-  @media (max-width: 1024px) {
+  
+  @media (max-width: ${({ theme }) => theme.breakpoints.tablet}) {
     margin-left: 0;
     margin-top: 2rem;
     transform: scale(0.8);
   }
 
-  @media (max-width: 768px) {
+  @media (max-width: ${({ theme }) => theme.breakpoints.mobile}) {
     transform: scale(0.6);
   }
 `;
@@ -46,10 +44,10 @@ export const NavItemWrapper = styled.div`
   position: absolute;
   top: 50%;
   left: 50%;
-  width: ${ITEM_SIZE}px;
-  height: ${ITEM_SIZE}px;
-  margin-top: -${ITEM_SIZE / 2}px;
-  margin-left: -${ITEM_SIZE / 2}px;
+  width: ${({ theme }) => theme.sizes.item}px;
+  height: ${({ theme }) => theme.sizes.item}px;
+  margin-top: -${({ theme }) => theme.sizes.item / 2}px;
+  margin-left: -${({ theme }) => theme.sizes.item / 2}px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -61,21 +59,23 @@ export const NavItemContent = styled.div<{isActive:boolean, title:string}>`
   min-width: ${props => props.isActive ? '56px' : '8px'};
   min-height: ${props => props.isActive ? '56px' : '8px'};
   font-size: ${props => props.isActive ? '1.2rem' : '0px'};
-  background: ${props => props.isActive ? 'transparent' : 'rgba(66, 86, 122, 0.7)'};
+  background: ${props => props.isActive ? 'transparent' : props.theme.colors.borderDark};
   border-radius: 50%;
-  color: rgba(66, 86, 122, 0.7);
+  color: ${props => props.theme.colors.borderDark};
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   transition: all 0.5s ease;
-  border: 1px solid rgba(66, 86, 122, 0.7);
+  border: 1px solid ${props => props.theme.colors.borderDark};
+  
   &:hover {
     font-size: 1.2rem;
     min-width: 56px;
     min-height: 56px;
-    background: white;
+    background: ${({ theme }) => theme.colors.white};
   }
+  
   &::after {
     content: '${props => props.title}';
     display: ${props => props.isActive ? 'block' : 'none'};
@@ -84,7 +84,7 @@ export const NavItemContent = styled.div<{isActive:boolean, title:string}>`
     top: 0;
     left: 76px;
     width: 200px;
-    color: black;
+    color: ${({ theme }) => theme.colors.black};
   }
 `;
 

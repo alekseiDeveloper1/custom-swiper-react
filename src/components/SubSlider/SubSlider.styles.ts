@@ -4,7 +4,7 @@ export const SubSliderContainer = styled.div`
   position: relative;
   width: 650px;
   margin: 56px 100px;
-  @media (max-width: 1200px) {
+  @media (max-width: ${({ theme }) => theme.breakpoints.laptop}) {
     width: 90%;
     margin: 5px;
   }
@@ -17,7 +17,7 @@ export const SubSlide = styled.div`
   h3 {
     margin: 0 0 0.5rem;
     font-size: 1.25rem;
-    color: #5D5FEF;
+    color: ${({ theme }) => theme.colors.secondary};
   }
   p {
     margin: 0;
@@ -28,28 +28,28 @@ export const SubSlide = styled.div`
 export const NavButton = styled.button`
   position: absolute;
   background: transparent;
-  border: 1px solid #42567A;
-  color: #42567A;
+  border: 1px solid ${({ theme }) => theme.colors.primary};
+  color: ${({ theme }) => theme.colors.primary};
   cursor: pointer;
   width: 50px;
   height: 50px;
   border-radius: 50%;
   font-size: 20px;
   &:hover {
-    background-color: white;
+    background-color: ${({ theme }) => theme.colors.white};
   }
   &:disabled {
     opacity: 0.5;
     cursor: not-allowed;
   }
   &.prev {
-    top:50%;
+    top: 50%;
     transform: translateY(-50%);
     left: -75px;
   }
   &.next {
-    top:50%;
+    top: 50%;
     transform: translateY(-50%);
-    right: -75px
+    right: -75px;
   }
 `;

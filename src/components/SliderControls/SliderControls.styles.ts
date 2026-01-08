@@ -6,7 +6,7 @@ export const ControlsContainer = styled.div`
   display: flex;
   flex-direction: column;
   width: 100%;
-  @media (max-width: 1200px) {
+  @media (max-width: ${({ theme }) => theme.breakpoints.laptop}) {
       flex: 1 0 auto;
       width: 40%;
   }
@@ -16,13 +16,13 @@ export const ButtonWrap = styled.div`
   display: flex;
   margin-top: 20px;
   flex: 1 1 100%;
-  @media (max-width: 1200px) {
+  @media (max-width: ${({ theme }) => theme.breakpoints.laptop}) {
       flex: 1 0 auto;
   }
 `;
 
 export const ControlButton = styled.button`
-  border: 1px solid rgba(66, 86, 122, 0.7);
+  border: 1px solid ${({ theme }) => theme.colors.borderDark};
   width: 50px;
   height: 50px;
   border-radius: 50%;
@@ -31,23 +31,25 @@ export const ControlButton = styled.button`
   justify-content: center;
   align-items: center;
   font-size: 20px;
-  color: #42567A;
+  color: ${({ theme }) => theme.colors.primary};
   transition: background-color 0.3s;
-  @media (max-width: 1200px) {
+  
+  @media (max-width: ${({ theme }) => theme.breakpoints.laptop}) {
       -webkit-tap-highlight-color: transparent;
   }
+  
   &:hover {
-    background-color: white;
-    @media (max-width: 1200px) {
+    background-color: ${({ theme }) => theme.colors.white};
+    @media (max-width: ${({ theme }) => theme.breakpoints.laptop}) {
         background-color: transparent;
     }
   }
-  
     
   &:disabled {
     cursor: not-allowed;
     opacity: 0.5;
   }
+  
   & + & {
     margin-left: 1rem;
   }
@@ -55,6 +57,6 @@ export const ControlButton = styled.button`
 
 export const Counter = styled.div`
   font-size: 18px;
-  color: #42567A;
+  color: ${({ theme }) => theme.colors.primary};
   margin-left: 1rem;
 `;

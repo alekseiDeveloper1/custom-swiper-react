@@ -1,9 +1,6 @@
 import React from 'react';
-import {
-  ControlsContainer,
-  ControlButton,
-  Counter, ButtonWrap,
-} from './SliderControls.styles';
+import { ControlsContainer, Counter, ButtonWrap } from './SliderControls.styles';
+import { Button } from '../Button';
 
 interface SliderControlsProps {
   onPrev: () => void;
@@ -19,14 +16,12 @@ export const SliderControls: React.FC<SliderControlsProps> = ({ onPrev, onNext, 
         {String(current).padStart(2, '0')}/{String(total).padStart(2, '0')}
       </Counter>
       <ButtonWrap>
-        <ControlButton
-          onClick={onPrev}
-          disabled={current === 1}
-        >&lt;</ControlButton>
-        <ControlButton
-          onClick={onNext}
-          disabled={current === total}
-        >&gt;</ControlButton>
+        <Button onClick={onPrev} disabled={current === 1} aria-label="Previous">
+          &lt;
+        </Button>
+        <Button onClick={onNext} disabled={current === total} aria-label="Next">
+          &gt;
+        </Button>
       </ButtonWrap>
     </ControlsContainer>
   );

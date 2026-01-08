@@ -1,14 +1,13 @@
-
 import React, { useMemo } from 'react';
 import { Slide } from "@/types";
 import {
   CounterRotator,
   NavContainer,
-  NavItemContent,
   NavItemWrapper,
   NavNumber,
   RotatingRing
 } from "@/components/CircularNav/CircularNav.styles";
+import { Button } from '../Button';
 
 interface CircularNavProps {
   items: Slide[];
@@ -20,7 +19,6 @@ export const CircularNav: React.FC<CircularNavProps> = ({ items, activeIndex, on
   const count = items.length;
   const radius = 250;
 
-  // Memoize calculations to avoid re-computing on every render if items/count rarely change
   const { step, offset, containerRotation } = useMemo(() => {
     const stepCalc = 360 / count;
     return {
@@ -46,12 +44,6 @@ export const CircularNav: React.FC<CircularNavProps> = ({ items, activeIndex, on
           return (
             <NavItemWrapper
               key={item.id}
-              onClick={() => onSelect(index)}
-              onKeyDown={(e) => handleKeyDown(e, index)}
-              role="button"
-              tabIndex={0}
-              aria-label={`Select time period ${index + 1}: ${item.title}`}
-              aria-current={activeIndex === index ? 'step' : undefined}
               style={{
                 transform: `rotate(${angle}deg) translate(${radius}px) rotate(${-angle}deg)`,
                 cursor: 'pointer',
@@ -59,14 +51,17 @@ export const CircularNav: React.FC<CircularNavProps> = ({ items, activeIndex, on
               }}
             >
               <CounterRotator style={{ transform: `rotate(${-containerRotation}deg)` }}>
-                <NavItemContent
-                  title={item.title}
+                <Button
+                  variant="circular"
                   isActive={activeIndex === index}
-                  data-active={activeIndex === index}
-                  data-testid={`nav-item-${index}`}
+                  onClick={() => onSelect(index)}
+                  onKeyDown={(e) => handleKeyDown(e, index)}
+                  aria-label={`Select time period ${index + 1}: ${item.title}`}
+                  aria-current={activeIndex === index ? 'step' : undefined}
+                  title={item.title}
                 >
                   <NavNumber>{String(index + 1).padStart(2, '0')}</NavNumber>
-                </NavItemContent>
+                </Button>
               </CounterRotator>
             </NavItemWrapper>
           );

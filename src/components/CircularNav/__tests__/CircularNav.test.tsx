@@ -24,9 +24,8 @@ describe('CircularNav', () => {
         />
       </ThemeProvider>
     );
-    // There are 6 default slides
-    const dots = screen.getAllByText(/\d+/).filter(el => el.tagName === 'DIV' && !el.textContent?.includes('/'));
-    expect(screen.getAllByTestId(/nav-item-\d/)).toHaveLength(6);
+    const buttons = screen.getAllByRole('button');
+    expect(buttons).toHaveLength(DEFAULT_SLIDES.length);
   });
 
   it('highlights the active index', () => {
@@ -40,11 +39,11 @@ describe('CircularNav', () => {
       </ThemeProvider>
     );
 
-    const activeItem = screen.getByTestId('nav-item-2');
-    expect(activeItem).toHaveAttribute('data-active', 'true');
+    const activeItem = screen.getByLabelText(`Select time period 3: ${DEFAULT_SLIDES[2].title}`);
+    expect(activeItem).toHaveAttribute('aria-current', 'step');
 
-    const inactiveItem = screen.getByTestId('nav-item-0');
-    expect(inactiveItem).toHaveAttribute('data-active', 'false');
+    const inactiveItem = screen.getByLabelText(`Select time period 1: ${DEFAULT_SLIDES[0].title}`);
+    expect(inactiveItem).not.toHaveAttribute('aria-current');
   });
 
   it('calls onSelect when a dot is clicked', () => {
@@ -58,8 +57,8 @@ describe('CircularNav', () => {
       </ThemeProvider>
     );
 
-    const secondItemWrapper = screen.getByLabelText(`Select time period 2: ${DEFAULT_SLIDES[1].title}`);
-    fireEvent.click(secondItemWrapper);
+    const secondItem = screen.getByLabelText(`Select time period 2: ${DEFAULT_SLIDES[1].title}`);
+    fireEvent.click(secondItem);
     expect(mockOnSelect).toHaveBeenCalledWith(1);
   });
 });

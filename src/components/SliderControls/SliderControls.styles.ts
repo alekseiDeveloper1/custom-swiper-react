@@ -21,40 +21,6 @@ export const ButtonWrap = styled.div`
   }
 `;
 
-export const ControlButton = styled.button`
-  border: 1px solid ${({ theme }) => theme.colors.borderDark};
-  width: 50px;
-  height: 50px;
-  border-radius: 50%;
-  cursor: pointer;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-size: 20px;
-  color: ${({ theme }) => theme.colors.primary};
-  transition: background-color 0.3s;
-  
-  @media (max-width: ${({ theme }) => theme.breakpoints.laptop}) {
-      -webkit-tap-highlight-color: transparent;
-  }
-  
-  &:hover {
-    background-color: ${({ theme }) => theme.colors.white};
-    @media (max-width: ${({ theme }) => theme.breakpoints.laptop}) {
-        background-color: transparent;
-    }
-  }
-    
-  &:disabled {
-    cursor: not-allowed;
-    opacity: 0.5;
-  }
-  
-  & + & {
-    margin-left: 1rem;
-  }
-`;
-
 export const Counter = styled.div`
   font-size: 18px;
   color: ${({ theme }) => theme.colors.primary};

@@ -1,6 +1,7 @@
 import React, { useRef } from 'react';
-import { SubSliderContainer, SubSlide as SubSlideStyles, NavButton } from './SubSlider.styles';
+import { SubSliderContainer, SubSlide as SubSlideStyles } from './SubSlider.styles';
 import { SubSlide } from '@/types';
+import { Button } from '../Button';
 
 import { Swiper, SwiperSlide } from 'swiper/react';
 import type { Swiper as SwiperInstance } from 'swiper';
@@ -24,7 +25,7 @@ export const SubSlider: React.FC<SubSliderProps> = ({ slides }) => {
 
   return (
     <SubSliderContainer>
-      {!isMobile && <NavButton className="prev">&lt;</NavButton>}
+      {!isMobile && <Button className="prev">&lt;</Button>}
       <Swiper
         onSwiper={(swiper) => {
           swiperRef.current = swiper;
@@ -47,7 +48,7 @@ export const SubSlider: React.FC<SubSliderProps> = ({ slides }) => {
           </SwiperSlide>
         ))}
       </Swiper>
-      {!isMobile && <NavButton className="next">&gt;</NavButton>}
+      {!isMobile && <Button className="next">&gt;</Button>}
     </SubSliderContainer>
   );
 };

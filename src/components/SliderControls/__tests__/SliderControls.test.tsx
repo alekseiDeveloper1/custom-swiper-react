@@ -29,7 +29,7 @@ describe('SliderControls', () => {
         <SliderControls {...defaultProps} current={1} />
       </ThemeProvider>
     );
-    const prevBtn = screen.getByText('<');
+    const prevBtn = screen.getByLabelText('Previous');
     expect(prevBtn).toBeDisabled();
   });
 
@@ -39,7 +39,7 @@ describe('SliderControls', () => {
         <SliderControls {...defaultProps} current={6} total={6} />
       </ThemeProvider>
     );
-    const nextBtn = screen.getByText('>');
+    const nextBtn = screen.getByLabelText('Next');
     expect(nextBtn).toBeDisabled();
   });
 
@@ -49,7 +49,7 @@ describe('SliderControls', () => {
         <SliderControls {...defaultProps} current={2} />
       </ThemeProvider>
     );
-    const nextBtn = screen.getByText('>');
+    const nextBtn = screen.getByLabelText('Next');
     fireEvent.click(nextBtn);
     expect(defaultProps.onNext).toHaveBeenCalled();
   });
@@ -60,7 +60,7 @@ describe('SliderControls', () => {
         <SliderControls {...defaultProps} current={2} />
       </ThemeProvider>
     );
-    const prevBtn = screen.getByText('<');
+    const prevBtn = screen.getByLabelText('Previous');
     fireEvent.click(prevBtn);
     expect(defaultProps.onPrev).toHaveBeenCalled();
   });

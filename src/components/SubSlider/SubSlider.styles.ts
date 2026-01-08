@@ -24,32 +24,3 @@ export const SubSlide = styled.div`
     font-size: 0.875rem;
   }
 `;
-
-export const NavButton = styled.button`
-  position: absolute;
-  background: transparent;
-  border: 1px solid ${({ theme }) => theme.colors.primary};
-  color: ${({ theme }) => theme.colors.primary};
-  cursor: pointer;
-  width: 50px;
-  height: 50px;
-  border-radius: 50%;
-  font-size: 20px;
-  &:hover {
-    background-color: ${({ theme }) => theme.colors.white};
-  }
-  &:disabled {
-    opacity: 0.5;
-    cursor: not-allowed;
-  }
-  &.prev {
-    top: 50%;
-    transform: translateY(-50%);
-    left: -75px;
-  }
-  &.next {
-    top: 50%;
-    transform: translateY(-50%);
-    right: -75px;
-  }
-`;

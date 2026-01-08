@@ -53,41 +53,6 @@ export const NavItemWrapper = styled.div`
   justify-content: center;
 `;
 
-export const NavItemContent = styled.div<{isActive:boolean, title:string}>`
-  position: relative;
-  box-sizing: border-box;
-  min-width: ${props => props.isActive ? '56px' : '8px'};
-  min-height: ${props => props.isActive ? '56px' : '8px'};
-  font-size: ${props => props.isActive ? '1.2rem' : '0px'};
-  background: ${props => props.isActive ? 'transparent' : props.theme.colors.borderDark};
-  border-radius: 50%;
-  color: ${props => props.theme.colors.borderDark};
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  transition: all 0.5s ease;
-  border: 1px solid ${props => props.theme.colors.borderDark};
-  
-  &:hover {
-    font-size: 1.2rem;
-    min-width: 56px;
-    min-height: 56px;
-    background: ${({ theme }) => theme.colors.white};
-  }
-  
-  &::after {
-    content: '${props => props.title}';
-    display: ${props => props.isActive ? 'block' : 'none'};
-    position: absolute;
-    line-height: 56px;
-    top: 0;
-    left: 76px;
-    width: 200px;
-    color: ${({ theme }) => theme.colors.black};
-  }
-`;
-
 export const CounterRotator = styled.div`
   width: 100%;
   height: 100%;

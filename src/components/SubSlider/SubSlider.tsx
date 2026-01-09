@@ -32,11 +32,13 @@ export const SubSlider: React.FC<SubSliderProps> = ({ slides }) => {
         }}
         spaceBetween={30}
         freeMode={true}
+        watchOverflow={true}
+        centerInsufficientSlides={true}
         navigation={navigation}
         modules={[FreeMode, Navigation]}
         breakpoints={{
           320: { slidesPerView: 2 },
-          1200: { slidesPerView: 3 },
+          1200: { slidesPerView: 3, watchOverflow: true },
         }}
       >
         {slides.map((slide, index) => (

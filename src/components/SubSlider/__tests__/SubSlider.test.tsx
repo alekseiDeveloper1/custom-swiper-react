@@ -9,7 +9,9 @@ import { describe, it, expect, jest } from '@jest/globals';
 import '@testing-library/jest-dom';
 
 jest.mock('@/hooks/useIsMobile');
-
+jest.mock('swiper/css', () => {});
+jest.mock('swiper/css/free-mode', () => {});
+jest.mock('swiper/css/navigation', () => {});
 // Mock Swiper
 jest.mock('swiper/react', () => ({
   Swiper: ({ children }: { children: React.ReactNode }) => <div data-testid="swiper-mock">{children}</div>,
@@ -24,9 +26,9 @@ jest.mock('swiper/modules', () => ({
 
 describe('SubSlider', () => {
   const mockSlides: SubSlide[] = [
-    { title: 'Title 1', description: 'Description 1' },
-    { title: 'Title 2', description: 'Description 2' },
-    { title: 'Title 3', description: 'Description 3' },
+    { title: 1899, description: 'Description 1' },
+    { title: 1800, description: 'Description 2' },
+    { title: 1888, description: 'Description 3' },
   ];
 
   it('renders slides correctly', () => {
@@ -36,9 +38,9 @@ describe('SubSlider', () => {
             <SubSlider slides={mockSlides} />
         </ThemeProvider>
     );
-    expect(screen.getByText('Title 1')).toBeInTheDocument();
+    expect(screen.getByText('1899')).toBeInTheDocument();
     expect(screen.getByText('Description 1')).toBeInTheDocument();
-    expect(screen.getByText('Title 2')).toBeInTheDocument();
+    expect(screen.getByText('1800')).toBeInTheDocument();
     expect(screen.getByText('Description 2')).toBeInTheDocument();
   });
 

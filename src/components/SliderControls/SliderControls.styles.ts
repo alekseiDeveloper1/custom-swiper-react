@@ -15,6 +15,7 @@ export const ControlsContainer = styled.div`
 export const ButtonWrap = styled.div`
   display: flex;
   margin-top: 20px;
+  gap: 10px;
   flex: 1 1 100%;
   @media (max-width: ${({ theme }) => theme.breakpoints.laptop}) {
       flex: 1 0 auto;

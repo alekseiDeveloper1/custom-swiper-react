@@ -4,12 +4,13 @@ export const SubSliderContainer = styled.div`
   position: relative;
   width: 650px;
   margin: 56px 100px;
+  display: flex;
+  align-items: center;
   @media (max-width: ${({ theme }) => theme.breakpoints.laptop}) {
     width: 90%;
     margin: 5px;
   }
 `;
-
 export const SubSlide = styled.div`
   padding: 1rem;
   box-sizing: border-box;

@@ -8,19 +8,23 @@ interface StyledButtonProps {
 }
 
 const circularVariant = css<StyledButtonProps>`
+  position: relative;
   min-width: ${props => props.isActive ? '56px' : '8px'};
   min-height: ${props => props.isActive ? '56px' : '8px'};
   font-size: ${props => props.isActive ? '1.2rem' : '0px'};
-  background: ${props => props.isActive ? 'transparent' : props.theme.colors.borderDark};
+  background: ${props => props.isActive ? 'transparent' : props.theme.colors.primary};
   border: 1px solid ${props => props.theme.colors.borderDark};
-  color: ${props => props.theme.colors.borderDark};
+  color: ${props => props.theme.colors.primary};
   transition: all 0.5s ease;
-
+  width: auto;
+  height: auto;
+  padding: 0;
   &:hover {
     font-size: 1.2rem;
     min-width: 56px;
     min-height: 56px;
-    background: ${({ theme }) => theme.colors.white};
+    background: transparent;
+    color: ${props => props.theme.colors.primary};
   }
 
   &::after {
@@ -36,7 +40,6 @@ const circularVariant = css<StyledButtonProps>`
 `;
 
 export const StyledButton = styled.button<StyledButtonProps>`
-  position: relative;
   box-sizing: border-box;
   display: flex;
   align-items: center;
@@ -50,8 +53,8 @@ export const StyledButton = styled.button<StyledButtonProps>`
   background-color: transparent;
   color: ${({ theme }) => theme.colors.primary};
   font-size: 1.5rem;
-  width: 50px;
-  height: 50px;
+  min-width: 50px;
+  min-height: 50px;
 
   &:hover {
     background-color: ${({ theme }) => theme.colors.primary};
@@ -59,12 +62,12 @@ export const StyledButton = styled.button<StyledButtonProps>`
   }
 
   &:disabled {
-    border-color: ${({ theme }) => theme.colors.gray};
-    color: ${({ theme }) => theme.colors.gray};
+    border-color: ${({ theme }) => theme.colors.primary};
+    color: ${({ theme }) => theme.colors.primary};
     cursor: not-allowed;
     &:hover {
       background-color: transparent;
-      color: ${({ theme }) => theme.colors.gray};
+      color: ${({ theme }) => theme.colors.primary};
     }
   }
 

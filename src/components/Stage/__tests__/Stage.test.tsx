@@ -20,7 +20,7 @@ describe('Stage', () => {
         <Stage stage={stageData} />
       </ThemeProvider>
     );
-    
+
     const values = screen.getAllByTestId('countup-val');
     expect(values[0]).toHaveTextContent('1990');
     expect(values[1]).toHaveTextContent('1995');

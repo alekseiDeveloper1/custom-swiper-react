@@ -10,7 +10,13 @@ export const GlobalStyles = createGlobalStyle`
         -moz-osx-font-smoothing: grayscale;
         background-color: #f0f0f0;
     }
-
+    .swiper {
+        width: 100%;
+        min-width: 0;
+    }
+    .swiper-button-lock {
+        display: none;
+    }
     .swiper-pagination-bullet.swiper-pagination-bullet-active {
         background-color: rgb(66, 86, 122);
     }
